@@ -1,23 +1,22 @@
-﻿using Domain;
-using Domain.Common;
+﻿using AccessControl.Domain.Common;
 using System.Runtime.CompilerServices;
 
-namespace Domain.Entities.ConfigurationData
+namespace AccessControl.Domain.Entities.ConfigurationData
 {
-    abstract public class Person
+    abstract public class Person : Entity
     {
         public string Name { get; set; }
         public string CI { get; set; }
         public School? Formation { get; set; }
 
-        public Person()
+        public Person() : base()
         {
             Name = string.Empty;
             CI = string.Empty;
             Formation = null;
         }
 
-        public Person(string name, string cI, School? formation)
+        public Person(string name, string cI, School? formation, Guid id) : base(id)
         {
             Name = name;
             CI = cI;
@@ -26,8 +25,8 @@ namespace Domain.Entities.ConfigurationData
 
         public bool ValidPerson()
         {
-            
-            if (Formation == null || string.IsNullOrEmpty(this.Name) || ValidCI(CI))
+
+            if (Formation == null || string.IsNullOrEmpty(Name) || ValidCI(CI))
                 return false;
             return true;
         }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccessControl.Domain;
+using AccessControl.Domain.Common;
 
-namespace Domain.ValueObjects
+namespace AccessControl.Domain.ValueObjects
 {
-    public class Process
+    public class Process : ValueObject
     {
         public string Name { get; set; }
         List<string> Products { get; set; }
@@ -21,6 +23,14 @@ namespace Domain.ValueObjects
         {
             Name = name;
             Products = products;
+        }
+
+        protected override IEnumerable<object> GetEqualityComponents()
+        {
+            foreach (string str in Products)
+            {
+                yield return new object[] { str };
+            }
         }
     }
 }

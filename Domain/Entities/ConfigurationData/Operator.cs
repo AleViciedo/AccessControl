@@ -1,21 +1,27 @@
-﻿using Domain.Common;
+﻿using AccessControl.Domain.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities.ConfigurationData
+namespace AccessControl.Domain.Entities.ConfigurationData
 {
     public class Operator : Person
     {
-        Supervisor? Supervisor { get; set; }
+        //Supervisor? Supervisor { get; set; }
+        public Guid SupervisorID { get; set; }
 
+        public Operator() : base() { }
 
-        public Operator() :base() { }
-        public Operator(Supervisor? supervisor, string name, string cI, School? formation) : base (name, cI, formation)
+    //    public operator (supervisor? supervisor, string name, string ci, school? formation, guid id) : base(name, ci, formation, id)
+    //    {
+    //        supervisor = supervisor;
+    //}
+
+    public Operator(Guid SuperId, string name, string cI, School? formation, Guid id) : base(name, cI, formation, id)
         {
-            Supervisor = supervisor;
+            SupervisorID = SuperId;
         }
     }
 }
