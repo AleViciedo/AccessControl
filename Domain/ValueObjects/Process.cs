@@ -13,8 +13,8 @@ namespace AccessControl.Domain.ValueObjects
     {
         public string Name { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
-        public ICollection<Person> Operators { get; set; } = new List<Person>();
-        public ICollection<Person> Supervisors { get; set; } = new List<Person>();
+        public ICollection<Operator> Operators { get; set; } = new List<Operator>();
+        public ICollection<Supervisor> Supervisors { get; set; } = new List<Supervisor>();
 
         public Process()
         {

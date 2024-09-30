@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccessControl.Domain.Entities.ConfigurationData;
+using AccessControl.Domain.Entities.HistoricalData;
+using AccessControl.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace AccessControl.DataAccess.Context
@@ -14,6 +16,8 @@ namespace AccessControl.DataAccess.Context
         #region Tables
 
         public DbSet<Person> Persons { get; set; }
+        public DbSet<AccessEntry> AccessEntries { get; set; }
+        public DbSet<Process> Processes { get; set; }
 
         #endregion
 
