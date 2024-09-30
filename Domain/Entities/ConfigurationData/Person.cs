@@ -1,4 +1,6 @@
 ﻿using AccessControl.Domain.Common;
+using AccessControl.Domain.ValueObjects;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 
 namespace AccessControl.Domain.Entities.ConfigurationData
@@ -8,7 +10,7 @@ namespace AccessControl.Domain.Entities.ConfigurationData
         public string Name { get; set; }
         public string CI { get; set; }
         public School? Formation { get; set; }
-
+        public List<ValueObjects.Process> Processes { get; set; }
         public Person() : base()
         {
             Name = string.Empty;

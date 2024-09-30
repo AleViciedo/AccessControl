@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,9 @@ namespace AccessControl.DataAccess.Context
         {
         }
 
-        //public ApplicationContext(string connectionString) : base(GetOptions(connectionString))
-        //{
-        //}
+        public ApplicationContext(string connectionString) : base(GetOptions(connectionString))
+        {
+        }
 
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
@@ -39,7 +40,10 @@ namespace AccessControl.DataAccess.Context
             base.OnModelCreating(modelBuilder);
         }
 
-
+        private static DbContextOptions GetOptions (string connectionString)
+        {
+            return SqliteDbContextOptionsBuilderExtensions.UseSqlite(new DbContextOptionsBuilder(), connectionString).Options;
+        }
 
     }
 }

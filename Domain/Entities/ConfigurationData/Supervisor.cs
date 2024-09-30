@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AccessControl.Domain.Common;
+using AccessControl.Domain.ValueObjects;
 
 namespace AccessControl.Domain.Entities.ConfigurationData
 {
     public class Supervisor : Person
     {
-        List<Operator> Operators { get; set; }
+        public List<Operator> Operators { get; set; }
 
         public Supervisor() : base()
         {

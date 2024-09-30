@@ -1,4 +1,5 @@
 ﻿using AccessControl.Domain.Common;
+using AccessControl.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,19 +10,22 @@ namespace AccessControl.Domain.Entities.ConfigurationData
 {
     public class Operator : Person
     {
-        //Supervisor? Supervisor { get; set; }
-        public Guid SupervisorID { get; set; }
+        public Supervisor? Supervisor { get; set; }
+        
+        //public Guid SupervisorID { get; set; }
 
         public Operator() : base() { }
 
-    //    public operator (supervisor? supervisor, string name, string ci, school? formation, guid id) : base(name, ci, formation, id)
-    //    {
-    //        supervisor = supervisor;
-    //}
-
-    public Operator(Guid SuperId, string name, string cI, School? formation, Guid id) : base(name, cI, formation, id)
+        public Operator (Supervisor? supervisor, string name, string ci, School? formation, Guid id) : base(name, ci, formation, id)
         {
-            SupervisorID = SuperId;
+            Supervisor = supervisor;
         }
+
     }
+
+    //public Operator(Guid SuperId, string name, string cI, School? formation, Guid id) : base(name, cI, formation, id)
+    //    {
+    //        SupervisorID = SuperId;
+    //    }
+    //}
 }
