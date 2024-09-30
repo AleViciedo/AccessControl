@@ -11,6 +11,7 @@ namespace AccessControl.Domain.ValueObjects
 {
     public class Process : ValueObject
     {
+        public Guid ProcessId { get; set; }  //Process es un ValueObject, pero debe ser tratado como Entity para la DB
         public string Name { get; set; }
         public List<Product> Products { get; set; } = new List<Product>();
         public ICollection<Operator> Operators { get; set; } = new List<Operator>();

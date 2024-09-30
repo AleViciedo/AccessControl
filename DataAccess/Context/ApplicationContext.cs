@@ -4,6 +4,7 @@ using System.Dynamic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AccessControl.DataAccess.FluentConfiguration.ValueObjects;
 using AccessControl.Domain.Entities.ConfigurationData;
 using AccessControl.Domain.Entities.HistoricalData;
 using AccessControl.Domain.ValueObjects;
@@ -41,6 +42,7 @@ namespace AccessControl.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.ApplyConfiguration(new ProcessAsEntityTypeConfiguration());
             base.OnModelCreating(modelBuilder);
         }
 

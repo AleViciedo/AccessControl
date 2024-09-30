@@ -15,12 +15,14 @@ namespace AccessControl.DataAccess.FluentConfiguration.ValueObjects
     {
         public void Configure(EntityTypeBuilder<Process> builder)
         {
+            builder.HasKey(p => p.ProcessId);
             builder.ToTable("Processes");
             builder.Property(p => p.Name).IsRequired();
             builder.OwnsMany(p => p.Products, product =>
             {
                 product.ToTable("Process Products");
-                product.Property(p => p).HasColumnName("Product Name").IsRequired();
+                product.Property(p => p.Name).HasColumnName("Product Name").IsRequired();
+                
             });
 
             
