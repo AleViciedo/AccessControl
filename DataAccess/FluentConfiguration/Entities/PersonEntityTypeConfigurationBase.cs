@@ -18,6 +18,7 @@ namespace AccessControl.DataAccess.FluentConfiguration.Persons
         public override void Configure(EntityTypeBuilder<Person> builder)
         {
             builder.ToTable("Persons");
+            builder.Ignore(x => x.Processes);
             //Definiendo conversion a string para el nivel de escolaridad
             builder.Property(x => x.Formation).HasConversion(c => c.ToString(), s => (School)Enum.Parse(typeof(School), s));
         }

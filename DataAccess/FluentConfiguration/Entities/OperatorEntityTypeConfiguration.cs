@@ -15,6 +15,7 @@ namespace AccessControl.DataAccess.FluentConfiguration.Persons
         {
             builder.ToTable("Operators");
             builder.HasBaseType(typeof(Person));
+            builder.Ignore(x => x.Processes);
             builder.HasOne(x => x.Supervisor).WithMany().HasForeignKey(x => x.Supervisor.CI);
         }
     }
