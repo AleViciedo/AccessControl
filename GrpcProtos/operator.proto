@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControl.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+import "process.proto";
+
+service Operator{
+	rpc CreateOperator(CreateOperatorRequest) returns (OperatorDTO);
+	rpc GetOperator(GetRequest) returns (NullableOperatorDTO);
+	rpc GetAllOperators(google.protobuf.Empty) returns (Operators);
+	rpc UpdateOperator(OperatorDTO) returns (google.protobuf.Empty);
+	rpc DeleteOperator(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message OperatorDTO{
+	string id = 1;
+	string name = 2;
+	string CI = 3;
+	School formation = 4;
+	string supervisorid = 5;
+	Processes processes = 6;
+}
+
+message Operators{
+	repeated OperatorDTO items = 1;
+}
+
+message NullableOperatorDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		OperatorDTO operator = 2;
+	}
+}
+
+message CreateOperatorRequest{
+	string name = 1;
+	string CI = 2;
+	School formation = 3;
+}

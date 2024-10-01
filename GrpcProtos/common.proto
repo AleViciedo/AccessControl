@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControl.GrpcProtos";
+
+package GrpcProtos;
+
+message GetRequest{
+	string id = 1;
+}
+
+message DeleteRequest{
+	string id = 1;
+}
+
+message Product{
+	string name = 1;
+}
+
+message Products{
+	repeated Product items = 1;
+}
+
+enum School{
+	MiddleSchool = 0;
+	HighSchool = 1;
+	TechnicSchool = 2;
+	University = 3;
+}

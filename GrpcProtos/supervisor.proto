@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControl.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+import "process.proto";
+import "operator.proto";
+
+service Supervisor{
+	rpc CreateSupervisor(CreateSupervisorRequest) returns (SupervisorDTO);
+	rpc GetSupervisor(GetRequest) returns (NullableSupervisorDTO);
+	rpc GetAllSupervisors(google.protobuf.Empty) returns (Supervisors);
+	rpc UpdateSupervisor(SupervisorDTO) returns (google.protobuf.Empty);
+	rpc DeleteSupervisor(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message SupervisorDTO{
+	string id = 1;
+	string name = 2;
+	string CI = 3;
+	School formation = 4;
+	Operators operators = 5;
+	Processes processes = 6;
+}
+
+message Supervisors{
+	repeated SupervisorDTO items = 1;
+}
+
+message NullableSupervisorDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		SupervisorDTO supervisor = 2;
+	}
+}
+
+message CreateSupervisorRequest{
+	string name = 1;
+	string CI = 2;
+	School formation = 3;
+}

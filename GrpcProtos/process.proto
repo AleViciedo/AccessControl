@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControl.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+service Process{
+	rpc CreateProcess(CreateProcessRequest) returns (ProcessDTO);
+	rpc GetProcess(GetRequest) returns (NullableProcessDTO);
+	rpc GetAllProcesses(google.protobuf.Empty) returns (Processes);
+	rpc UpdateProcess(ProcessDTO) returns (google.protobuf.Empty);
+	rpc DeleteProcess(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message ProcessDTO{
+	string id = 1;
+	string name = 2;
+	Products productset = 3;
+}
+
+message Processes{
+	repeated ProcessDTO items = 1;
+}
+
+message NullableProcessDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		ProcessDTO process = 2;
+	}
+}
+
+message CreateProcessRequest{
+	string name = 1;
+}
