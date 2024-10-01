@@ -21,6 +21,33 @@ namespace AccessControl.Domain.Entities.ConfigurationData
         {
             Operators = new List<Operator>();
         }
+        public void AddOperator(Operator oper)
+        {
+            if (oper.Processes != null)
+            {
+                foreach (Process pro in oper.Processes)
+                {
+                    if (!this.Processes.Contains(pro))
+                    {
+                        this.Processes.Add(pro);
+                    }
+                }
+            }
+            this.Operators.Add(oper);
+            oper.Supervisor = this;
+        }
 
+        internal void UpdateProcesses(Operator solicitant)
+        {
+            foreach (Process pro in solicitant.Processes)
+            {
+                if (!this.Processes.Contains(pro))
+                {
+                    this.Processes.Add(pro);
+                }
+            }
+        }
+
+        
     }
 }

@@ -87,7 +87,7 @@ namespace AccessControl.DataAccess.Migrations
 
                     b.HasIndex("PersonId");
 
-                    b.ToTable("Processes", (string)null);
+                    b.ToTable("Processes");
                 });
 
             modelBuilder.Entity("AccessControl.Domain.Entities.ConfigurationData.Operator", b =>
@@ -136,30 +136,6 @@ namespace AccessControl.DataAccess.Migrations
                     b.HasOne("AccessControl.Domain.Entities.ConfigurationData.Person", null)
                         .WithMany("Processes")
                         .HasForeignKey("PersonId");
-
-                    b.OwnsMany("AccessControl.Domain.ValueObjects.Product", "Products", b1 =>
-                        {
-                            b1.Property<Guid>("ProcessId")
-                                .HasColumnType("TEXT");
-
-                            b1.Property<int>("Id")
-                                .ValueGeneratedOnAdd()
-                                .HasColumnType("INTEGER");
-
-                            b1.Property<string>("Name")
-                                .IsRequired()
-                                .HasColumnType("TEXT")
-                                .HasColumnName("Product Name");
-
-                            b1.HasKey("ProcessId", "Id");
-
-                            b1.ToTable("Process Products", (string)null);
-
-                            b1.WithOwner()
-                                .HasForeignKey("ProcessId");
-                        });
-
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("AccessControl.Domain.Entities.ConfigurationData.Operator", b =>

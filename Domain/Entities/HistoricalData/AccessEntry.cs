@@ -26,12 +26,12 @@ namespace AccessControl.Domain.Entities.HistoricalData
         //    InBuilding = inBuilding;
         //}
 
-        public AccessEntry(Guid id, Person person, DateTime entry, DateTime? exit, bool inBuilding) : base(id)
+        public AccessEntry(Guid id, Person person, DateTime entry, DateTime? exit) : base(id)
         {
             Person = person;
             Entry = entry;
             Exit = exit;
-            InBuilding = inBuilding;
+            InBuilding = exit == null;
         }
     }
 }

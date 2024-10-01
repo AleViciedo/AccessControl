@@ -22,7 +22,7 @@ namespace AccessControl.DataAccess.FluentConfiguration.Entities
             builder.HasMany(x => x.Processes)
                 .WithMany(p => p.Supervisors)
                 .UsingEntity<Dictionary<string, string>>(
-                    "Process Operator",
+                    "Process Supervisor",
                     j => j.HasOne<Process>().WithMany().HasForeignKey("ProcessId"),
                     j => j.HasOne<Supervisor>().WithMany().HasForeignKey("SupervisorId")
                 );

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccessControl.DataAccess.Migrations
 {
-    public partial class Initial4 : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -65,25 +65,6 @@ namespace AccessControl.DataAccess.Migrations
                         principalColumn: "Id");
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Process Products",
-                columns: table => new
-                {
-                    ProcessId = table.Column<Guid>(type: "TEXT", nullable: false),
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
-                    ProductName = table.Column<string>(name: "Product Name", type: "TEXT", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Process Products", x => new { x.ProcessId, x.Id });
-                    table.ForeignKey(
-                        name: "FK_Process Products_Processes_ProcessId",
-                        column: x => x.ProcessId,
-                        principalTable: "Processes",
-                        principalColumn: "ProcessId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AccessEntries_PersonId",
                 table: "AccessEntries",
@@ -140,9 +121,6 @@ namespace AccessControl.DataAccess.Migrations
 
             migrationBuilder.DropTable(
                 name: "AccessEntries");
-
-            migrationBuilder.DropTable(
-                name: "Process Products");
 
             migrationBuilder.DropTable(
                 name: "Persons");

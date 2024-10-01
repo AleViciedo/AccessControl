@@ -18,14 +18,30 @@ namespace AccessControl.DataAccess.FluentConfiguration.ValueObjects
             builder.HasKey(p => p.ProcessId);
             builder.ToTable("Processes");
             builder.Property(p => p.Name).IsRequired();
-            builder.OwnsMany(p => p.Products, product =>
-            {
-                product.ToTable("Process Products");
-                product.Property(p => p.Name).HasColumnName("Product Name").IsRequired();
-                
-            });
 
-            
+            //builder.OwnsMany(p => p.Products, product =>
+            //{
+            //    product.ToTable("Process Products");
+            //    product.Property(p => p.Name)
+            //        .HasColumnName("Product Name")
+            //        .IsRequired();
+            //    //product.Property<Guid>("ProductId").IsRequired();
+            //    product.Property<long>("Id")  // Definir Id como columna autoincremental
+            //        .ValueGeneratedOnAdd()
+            //        .IsRequired();
+            //    product.HasKey("Id");
+            //    product.WithOwner().HasForeignKey("ProcessId");
+            //});
+
+            builder.HasMany(x => x.Products)
+                .WithMany(p => p.Processes)
+                .UsingEntity<Dictionary<string, string>>(
+                    "Product Process",
+                    j => j.HasOne<Product>().WithMany().HasForeignKey("ProductId"),
+                    j => j.HasOne<Process>().WithMany().HasForeignKey("ProcessId")
+                );
+
+
         }
     }
 }

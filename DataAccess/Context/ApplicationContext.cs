@@ -9,6 +9,7 @@ using AccessControl.Domain.Entities.ConfigurationData;
 using AccessControl.Domain.Entities.HistoricalData;
 using AccessControl.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 
 namespace AccessControl.DataAccess.Context
 {
@@ -19,6 +20,7 @@ namespace AccessControl.DataAccess.Context
         public DbSet<Person> Persons { get; set; }
         public DbSet<AccessEntry> AccessEntries { get; set; }
         public DbSet<Process> Processes { get; set; }
+
 
         #endregion
 
@@ -42,7 +44,8 @@ namespace AccessControl.DataAccess.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new ProcessAsEntityTypeConfiguration());
+            //modelBuilder.ApplyConfiguration(new ProcessAsEntityTypeConfiguration());
+            
             base.OnModelCreating(modelBuilder);
         }
 

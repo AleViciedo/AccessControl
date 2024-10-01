@@ -16,6 +16,7 @@ namespace AccessControl.Domain.Entities.ConfigurationData
             Name = string.Empty;
             CI = string.Empty;
             Formation = null;
+            Processes = new List<ValueObjects.Process>();
         }
 
         public Person(string name, string cI, School? formation, Guid id) : base(id)
@@ -23,6 +24,7 @@ namespace AccessControl.Domain.Entities.ConfigurationData
             Name = name;
             CI = cI;
             Formation = formation;
+            Processes = new List<ValueObjects.Process>();
         }
 
         public bool ValidPerson()

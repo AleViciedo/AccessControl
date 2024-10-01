@@ -21,6 +21,11 @@ namespace AccessControl.Domain.Entities.ConfigurationData
             Supervisor = supervisor;
         }
 
+        public void AddProcess(Process process)
+        {
+            this.Processes.Add(process);
+            Supervisor.UpdateProcesses(this);
+        }
     }
 
     //public Operator(Guid SuperId, string name, string cI, School? formation, Guid id) : base(name, cI, formation, id)
