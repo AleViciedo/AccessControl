@@ -18,7 +18,7 @@ namespace AccessControl.DataAccess.FluentConfiguration.Entities
             builder.ToTable("Supervisors");
             builder.HasBaseType(typeof(Domain.Entities.ConfigurationData.Person));
             //builder.Ignore(x => x.Processes);
-            builder.HasMany(x => x.Operators).WithOne(x => x.Supervisor).HasForeignKey(x => x.Supervisor);
+            builder.HasMany(x => x.Operators).WithOne(x => x.Supervisor).HasForeignKey(x => x.Supervisor.Id);
             builder.HasMany(x => x.Processes)
                 .WithMany(p => p.Supervisors)
                 .UsingEntity<Dictionary<string, string>>(

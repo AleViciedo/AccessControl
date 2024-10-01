@@ -26,3 +26,8 @@ enum School{
 	TechnicSchool = 2;
 	University = 3;
 }
+
+message DateTime{
+	string Date = 1;
+	string Time = 2;
+}

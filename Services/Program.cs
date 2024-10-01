@@ -1,4 +1,12 @@
+using AccessControl.Services.Services;
 using Services.Services;
+using AccessControl.DataAccess;
+using AccessControl.DataAccess.Context;
+using AccessControl.Contracts;
+using Contracts.Entities;
+using AccessControl.DataAccess.Repositories.Entities;
+using Contracts.ValueObjects;
+using AccessControl.DataAccess.Repositories.ValueObjects;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,11 +15,20 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddGrpc();
+builder.Services.AddSingleton("Data Source=Data.sqlite");
+builder.Services.AddScoped<ApplicationContext>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddScoped<IPersonRepository, PersonRepository>();
+builder.Services.AddScoped<IAccessEntryRepository, AccessEntryRepository>();
+builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-app.MapGrpcService<GreeterService>();
+app.MapGrpcService<OperatorService>();
+app.MapGrpcService<SupervisorService>();
+app.MapGrpcService<ProcessService>();
+app.MapGrpcService<AccessEntryService>();
 app.MapGet("/", () => "Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
 
 app.Run();

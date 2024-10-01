@@ -18,7 +18,7 @@ namespace AccessControl.DataAccess.FluentConfiguration.Entities
             builder.ToTable("AccessEntries");
             base.Configure(builder);
             builder.Ignore(x => x.InBuilding);
-            builder.HasOne(x => x.Person).WithMany().HasForeignKey(x => x.Person.CI);
+            builder.HasOne(x => x.Person).WithMany().HasForeignKey(x => x.Person.Id);
 
         }
     }

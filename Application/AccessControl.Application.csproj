@@ -1,0 +1,33 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="AccessEntry\" />
+    <Folder Include="AccessEntry\Commands\" />
+    <Folder Include="Persons\Supervisor\Commands\" />
+    <Folder Include="Persons\Supervisor\Commands\DeleteSupervisor\" />
+    <Folder Include="Persons\Supervisor\Queries\GetAllSupervisors\" />
+    <Folder Include="Persons\Supervisor\Queries\GetSupervisor\" />
+    <Folder Include="AccessEntry\Queries\" />
+    <Folder Include="Persons\Supervisor\Queries\" />
+    <Folder Include="Persons\Supervisor\Commands\UpdateSupervisor\" />
+    <Folder Include="Persons\Operator\" />
+    <Folder Include="Persons\Supervisor\" />
+    <Folder Include="Persons\Operator\Commands\" />
+    <Folder Include="Persons\Operator\Queries\" />
+    <Folder Include="Persons\Supervisor\Commands\CreateSupervisor\" />
+    <Folder Include="Persons\Operator\Queries\GetOperator\" />
+    <Folder Include="Persons\Operator\Queries\GetAllOperators\" />
+    <Folder Include="Persons\Operator\Commands\DeleteOperator\" />
+    <Folder Include="Persons\Operator\Commands\CreateOperator\" />
+    <Folder Include="Persons\Operator\Commands\UpdateOperator\" />
+    <Folder Include="Process\Commands\" />
+    <Folder Include="Process\Queries\" />
+  </ItemGroup>
+
+</Project>

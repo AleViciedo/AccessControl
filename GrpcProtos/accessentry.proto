@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option csharp_namespace = "AccessControl.GrpcProtos";
+
+package GrpcProtos;
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/empty.proto";
+import "google/protobuf/struct.proto";
+import "common.proto";
+
+service AccessEntry{
+	rpc CreateAccessEntry(CreateAccessEntryRequest) returns (AccessEntryDTO);
+	rpc GetAccessEntry(GetRequest) returns (NullableAccessEntryDTO);
+	rpc GetAllAccessEntries(google.protobuf.Empty) returns (AccessEntries);
+	rpc UpdateAccessEntry(AccessEntryDTO) returns (google.protobuf.Empty);
+	rpc DeleteAccessEntry(DeleteRequest) returns (google.protobuf.Empty);
+}
+
+message AccessEntryDTO{
+	string personid = 1;
+	DateTime entry = 2;
+	DateTime exit = 3;
+	bool inbuilding = 4;
+}
+
+message AccessEntries{
+	repeated AccessEntryDTO items = 1;
+}
+
+message NullableAccessEntryDTO{
+	oneof kind{
+		google.protobuf.NullValue null = 1;
+		AccessEntryDTO accessentry = 2;
+	}
+}
+
+message CreateAccessEntryRequest{
+	string personid = 1;
+	DateTime entry = 2;
+}
