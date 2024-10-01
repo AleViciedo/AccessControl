@@ -12,7 +12,6 @@ using AccessControl.Application.Abstract;
 namespace AccessControl.Application.Process.Commands.CreateProcess
 {
     public record CreateProcessCommand(
-        Guid Id,
         string Name,
         List<Domain.ValueObjects.Product> Products
         ) : ICommand<Domain.ValueObjects.Process>;

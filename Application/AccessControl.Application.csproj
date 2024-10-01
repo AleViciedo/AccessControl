@@ -10,7 +10,6 @@
     <ProjectReference Include="..\DataAccess\AccessControl.DataAccess.csproj" />
     <ProjectReference Include="..\Domain\AccessControl.Domain.csproj" />
     <ProjectReference Include="..\GrpcProtos\AccessControl.GrpcProtos.csproj" />
-    <ProjectReference Include="..\Services\AccessControl.Services.csproj" />
   </ItemGroup>
 
 </Project>
