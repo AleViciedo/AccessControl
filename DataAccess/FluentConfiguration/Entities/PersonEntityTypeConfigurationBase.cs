@@ -14,9 +14,9 @@ using AccessControl.Domain.ValueObjects;
 
 namespace AccessControl.DataAccess.FluentConfiguration.Persons
 {
-    public class PersonEntityTypeConfigurationBase : EntityTypeConfigurationBase<Person>
+    public class PersonEntityTypeConfigurationBase : EntityTypeConfigurationBase<Domain.Entities.ConfigurationData.Person>
     {
-        public override void Configure(EntityTypeBuilder<Person> builder)
+        public override void Configure(EntityTypeBuilder<Domain.Entities.ConfigurationData.Person> builder)
         {
             builder.ToTable("Persons");
             //builder.Ignore(x => x.Processes);

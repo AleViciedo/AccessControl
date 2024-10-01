@@ -25,7 +25,7 @@ namespace AccessControl.Domain.Entities.ConfigurationData
         {
             if (oper.Processes != null)
             {
-                foreach (Process pro in oper.Processes)
+                foreach (ValueObjects.Process pro in oper.Processes)
                 {
                     if (!this.Processes.Contains(pro))
                     {
@@ -39,7 +39,7 @@ namespace AccessControl.Domain.Entities.ConfigurationData
 
         internal void UpdateProcesses(Operator solicitant)
         {
-            foreach (Process pro in solicitant.Processes)
+            foreach (ValueObjects.Process pro in solicitant.Processes)
             {
                 if (!this.Processes.Contains(pro))
                 {

@@ -17,9 +17,9 @@ namespace AccessControl.DataAccess.Context
     {
         #region Tables
 
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Domain.Entities.ConfigurationData.Person> Persons { get; set; }
         public DbSet<AccessEntry> AccessEntries { get; set; }
-        public DbSet<Process> Processes { get; set; }
+        public DbSet<Domain.ValueObjects.Process> Processes { get; set; }
 
 
         #endregion

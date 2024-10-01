@@ -46,9 +46,9 @@ namespace AccessControl.ConsoleApp
             //Product Libros = new Product("Libros", Guid.NewGuid(), SchoolItems);
 
 
-            Process process1 = new Process(Guid.NewGuid(), "Produccion de escuela", SchoolItems);
-            Process process2 = new Process(Guid.NewGuid(), "Produccion de contrabando", ContrabandItems );
-            Process process3 = new Process(Guid.NewGuid(), "Produccion de buenos sabores", GoodFlavors );
+            Domain.ValueObjects.Process process1 = new Domain.ValueObjects.Process(Guid.NewGuid(), "Produccion de escuela", SchoolItems);
+            Domain.ValueObjects.Process process2 = new Domain.ValueObjects.Process(Guid.NewGuid(), "Produccion de contrabando", ContrabandItems );
+            Domain.ValueObjects.Process process3 = new Domain.ValueObjects.Process(Guid.NewGuid(), "Produccion de buenos sabores", GoodFlavors );
             supervisor1.AddOperator(operator1);
             supervisor1.AddOperator(operator2);
             operator1.AddProcess(process1);

@@ -21,7 +21,7 @@ namespace AccessControl.Domain.Entities.ConfigurationData
             Supervisor = supervisor;
         }
 
-        public void AddProcess(Process process)
+        public void AddProcess(ValueObjects.Process process)
         {
             this.Processes.Add(process);
             Supervisor.UpdateProcesses(this);

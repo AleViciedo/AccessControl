@@ -15,14 +15,14 @@ namespace AccessControl.DataAccess.FluentConfiguration.Persons
         public void Configure(EntityTypeBuilder<Operator> builder)
         {
             builder.ToTable("Operators");
-            builder.HasBaseType(typeof(Person));
+            builder.HasBaseType(typeof(Domain.Entities.ConfigurationData.Person));
             //builder.Ignore(x => x.Processes);
             builder.HasOne(x => x.Supervisor).WithMany().HasForeignKey(x => x.Supervisor.CI);
             builder.HasMany(x => x.Processes)
                 .WithMany(p => p.Operators)
                 .UsingEntity<Dictionary<string, string>>(
                     "Process Operator",
-                    j => j.HasOne<Process>().WithMany().HasForeignKey("ProcessId"),
+                    j => j.HasOne<Domain.ValueObjects.Process>().WithMany().HasForeignKey("ProcessId"),
                     j => j.HasOne<Operator>().WithMany().HasForeignKey("OperatorId")
                 );
         }

@@ -18,11 +18,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Contracts\AccessControl.Contracts.csproj" />
     <ProjectReference Include="..\Domain\AccessControl.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AccessControl.Contracts">
+      <HintPath>..\Contracts\bin\Debug\net6.0\AccessControl.Contracts.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
