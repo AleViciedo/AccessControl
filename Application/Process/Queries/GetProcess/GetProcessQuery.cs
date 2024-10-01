@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 
 namespace AccessControl.Application.Process.Queries.GetProcess
 {
-    public record GetProcessQuery(Guid Id) :IQuery<Domain.ValueObjects.Process>;
+    public record GetProcessQuery(Guid Id) :IQuery<Domain.ValueObjects.Process?>;
 }

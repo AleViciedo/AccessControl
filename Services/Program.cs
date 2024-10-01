@@ -7,6 +7,7 @@ using Contracts.Entities;
 using AccessControl.DataAccess.Repositories.Entities;
 using Contracts.ValueObjects;
 using AccessControl.DataAccess.Repositories.ValueObjects;
+using System.Reflection.Metadata;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,11 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPersonRepository, PersonRepository>();
 builder.Services.AddScoped<IAccessEntryRepository, AccessEntryRepository>();
 builder.Services.AddScoped<IProcessRepository, ProcessRepository>();
+
+builder.Services.AddMediatR(new MediatRServiceConfiguration()
+{
+    AutoRegisterRequestProcessors = true,
+}.RegisterServicesFromAssemblies(typeof(AssemblyReference).Assembly));
 
 var app = builder.Build();
 

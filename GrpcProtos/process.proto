@@ -36,4 +36,5 @@ message NullableProcessDTO{
 
 message CreateProcessRequest{
 	string name = 1;
+	Products productset = 2;
 }

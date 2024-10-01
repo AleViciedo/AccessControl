@@ -8,6 +8,7 @@ using AccessControl.Contracts;
 using AccessControl.Domain.ValueObjects;
 using Contracts.ValueObjects;
 using AccessControl.DataAccess.Context;
+using AccessControl.DataAccess.FluentConfiguration.ValueObjects;
 
 namespace AccessControl.DataAccess.Repositories.ValueObjects
 {
@@ -30,7 +31,7 @@ namespace AccessControl.DataAccess.Repositories.ValueObjects
 
         public Process? GetProcessById(Guid id)
         {
-            return _context.Processes.FirstOrDefault(x =>x.ProcessId == id);
+            return _context.Processes.FirstOrDefault(x => x.ProcessId == id);
         }
 
         public void UpdateProcess(Process process)
